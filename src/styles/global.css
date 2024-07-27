@@ -6,23 +6,23 @@
   --background: #2c3e50;
   --background-light: #f0ead6;
   --primary-blue: #6c7a89;
-  --button: #78c2ad;
+  --button: #4b9e85;
   --text: #f0ead6;
   --text-light: #2c3e50;
-  --underline: #e27a3f;
+  --underline: #b35a24;
   --header: 'Abril Fatface', cursive;
   --body: 'Fredoka', sans-serif;
   --icon-border: #f0ead6;
-  --text-link: #e27a3f;
+  --text-link: #b35a24;
   --base-font-size: clamp(1rem, 1.5vw, 1.2rem);
-  --highlight-bg: #ffcc80;
-  --highlight-text: #2c3e50;
+  --select-bg: #ffcc80;
+  --select-text: #2c3e50;
 }
 
 /* Text Selection */
 ::selection {
-  background-color: var(--highlight-bg);
-  color: var(--highlight-text);
+  background-color: var(--select-bg);
+  color: var(--select-text);
 }
 
 html {
@@ -312,6 +312,12 @@ html.light {
 .light .icon__link:hover {
   border-color: var(--text-link);
   color: var(--text-link);
+}
+
+/* Work Item */
+.work-item {
+  list-style: none;
+  margin-bottom: 1rem;
 }
 
 /* 404 Page */
