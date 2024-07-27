@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+const pageTitle = "404 - Page Not Found";
+---
+<Layout pageTitle={pageTitle}>
+    <div class="lost">
+        <h1 class="lost__header">404</h1>
+        <img src="../public/404.png" alt="Lost bear cartoon" class="lost__image">
+        <p class="lost__body">Oops! The page you're looking for doesn't exist.</p>
+        <p class="lost__body">It looks like you took a wrong turn. Don't worry, it happens to the best of us!</p>
+        <p class="lost__body"><a class="lost__link" href="/">Return to Home</a></p>
+    </div>
+</Layout>
