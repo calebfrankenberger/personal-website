@@ -2,8 +2,8 @@
 title: 'LFSR Image Encryption Program'
 description: 'Description'
 image:
-  url: '/placeholder.png'
-  alt: 'Placeholder Card'
+  url: '/lfsr-cover.png'
+  alt: 'Screenshot of before and after image encryption'
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus a tortor at molestie. Sed pellentesque leo auctor, auctor lorem nec, venenatis risus. Vivamus commodo ipsum vitae orci finibus, vel porta nunc viverra. In hac habitasse platea dictumst. Nunc pretium, ligula ultricies consequat sollicitudin, enim ex ullamcorper nisl.
+<div class="badge">WHOOPS. I'm still making my website, and this page hasn't been finished yet. Sorry!</div>
