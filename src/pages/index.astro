@@ -14,9 +14,8 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
 <!-- Write project post: Telescope -->
 <!-- Write project post: Automata -->
 <!-- Write project post: LFSR -->
-<!-- Write project post: Fusor -->
+<!-- Write project post: RAG AI -->
 <!-- Write post: Backpacking -->
-<!-- Write post: Philosophy -->
 
 
 <Layout pageTitle={pageTitle} metaDescription={metaDescription}>
@@ -33,13 +32,17 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
         <p class="center"><a href="/posts/cat-pics"><button class="btn" aria-label="View Cat Pictures">Cat Pictures</button></a></p>
         
         <h2 id="education">Education</h2>
-       
-        <p>I&#39;m currently studying at Radford University, majoring in Physics with a minor in Mathematics. From a young age, I’ve always been fascinated by how things work. I believe that my choice of major will help me better understand the world around me.</p>
-
+        <p>I'm currently studying at Radford University, pursuing a double major in Mathematics (with a Statistics concentration) and Physics (with the Experimental and Theoretical concentration). From a young age, I’ve always been fascinated by how things work. I believe that my choice of majors will help me better understand the world around me.</p>
+        
         <h2 id="projects">Projects</h2>
 
         <p>I'm proud of several projects, including:</p>
         
+        <p>
+            <strong>Retrieval-Augmented Generation AI Project:</strong> Developed a web interface using Flask for uploading and querying PDF documents, integrated a language model, and optimized retrieval accuracy through backend customization.
+            <a class="see_more" href="/projects/ai-project" aria-label="See more about the Retrieval-Augmented Generation AI Project">See more...</a>
+        </p>
+
         <p>
             <strong>Newtonian Telescope Construction:</strong> I 3D printed all the parts, purchased hardware and mirrors, then assembled and calibrated the telescope myself. 
             <a class="see_more" href="/projects/telescope" aria-label="See more about the Newtonian Telescope Construction project">See more...</a>
@@ -55,11 +58,6 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
             <a class="see_more" href="/projects/lfsr-program" aria-label="See more about the Linear Feedback Shift Register Program project">See more...</a>
         </p>
 
-        <p>
-            <strong>Farnsworth-Hirsch Fusor:</strong> I am currently building a Farnsworth Fusor, a device that uses an electric field to heat ions to a temperature where they undergo nuclear fusion. The fusor works by creating a large potential difference in voltage between a central metal grid and the conductive body of a vacuum chamber. This setup accelerates deuterium ions towards the center, where they can collide and potentially fuse. Although not an efficient method for producing energy, the fusor demonstrates the fascinating process of nuclear fusion. 
-            <a class="see_more" href="/projects/fusor" aria-label="See more about the Farnsworth-Hirsch Fusor project">See more...</a>
-        </p>
-
         <h2 id="hobbies-and-interests">Hobbies and Interests</h2>
 
         <p>
@@ -73,15 +71,15 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
         <p>
             <strong>Music:</strong> I love listening to music. I listen to almost every genre. Some of my favorite artists include:
             <ul>
-                <li>Tyler the Creator</li>
-                <li>Caamp</li>
-                <li>Greta van Fleet</li>
                 <li>Still Woozy</li>
+                <li>Caamp</li>
+                <li>Tyler the Creator</li>
+                <li>Glass Animals</li>
+                <li>Greta van Fleet</li>
                 <li>Watchhouse</li>
                 <li>Sturgill Simpson</li>
                 <li>John Mayer</li>
                 <li>Tyler Childers</li>
-                <li>Glass Animals</li>
             </ul>
             In terms of playing music, I know how to play the French Horn and Trumpet. If I ever have enough free time, I would love to learn piano and guitar.
         </p>
@@ -93,18 +91,14 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
         <p>
             <strong>Misc:</strong> I also enjoy playing video games such as Minecraft and Valorant. 3D printing is another hobby of mine; the idea of being able to print any shape out of a spool of plastic is very cool to me.
         </p>
-
-        <h2 id="personal-philosophy-and-goals">Personal Philosophy and Goals</h2>
-        <p>My career goals are currently in the air as I focus on getting through college and seeing where life takes me afterward. I am open to exploring various opportunities and finding a path that aligns with my interests and skills.</p>
-        <p>Recently, I switched to using a flip phone. I believe technology is taking over every aspect of our lives, and more people should make an effort to minimize their use. This decision has definitely improved my life. You can read more about my thoughts on this <a href="/posts/digital-usage" aria-label="Read more about my thoughts on digital usage">here</a>.</p>
-        
+     
         <h2 id="technical-skills">Technical Skills</h2>
         <h3>Programming and Development</h3>
         <ul>
-            <li>Languages: Proficient in Java; experienced with HTML, CSS, and basic JavaScript; participated in AI research project using Python.</li>
-            <li>Tools and Environments: Prefer IntelliJ for Java development and VSCode for web development; familiar with version control using Git/GitHub.</li>
+            <li>Languages: Proficient in Java, R, SAS; experienced with HTML, CSS, and basic JavaScript; familiar with Python.</li>
+            <li>Tools and Environments: Prefer IntelliJ for Java development, RStudio for R programming, and VSCode for web development; familiar with version control using Git/GitHub.</li>
             <li>Systems: Experienced in working with Linux, Windows, and macOS.</li>
-        </ul>
+          </ul>
 
         <h3>Hardware and Technical Skills</h3>
         <ul>
@@ -123,22 +117,25 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
 
         <ul>
             <li class="work-item">
-                <strong>Pizza Chef:</strong> My first job was at Brickhouse Pizza. I started off washing dishes and moved on to making pizzas by the time I left for college. Had fun here, worked with friends.
+                <strong>Tutor at Radford University:</strong> About to start this!
+              </li>
+            <li class="work-item">
+                <strong>Summer Student Researcher:</strong> I got to code cool AI stuff under the guidance of Dr. Lahn. I learned a lot about python, retrieval-augmented systems, and how to tweak the inner workings of AI.
             </li>
             <li class="work-item">
-                <strong>Chophouse Manager:</strong> I attended Virginia Tech for one year, and while I was there, I worked in JP’s chophouse. I eventually became a student manager who helped schedule employees and manage our small shop. My coworkers were great here. The place shut down during COVID, and I didn’t return to VT afterward.
-            </li>
-            <li class="work-item">
-                <strong>Target Grunt:</strong> Got carts. Stocked shelves. Scanned groceries. Not much to say about this job.
+                <strong>IT Technician:</strong> It was fun while it lasted..
             </li>
             <li class="work-item">
                 <strong>Radford Army Ammunition Plant Security Guard:</strong> Don’t get me started.
             </li>
             <li class="work-item">
-                <strong>IT Technician:</strong> I currently work here and love getting to put my computer skills to use as I help people around the office with various printer and computer-related troubles they have.
+                <strong>Target Grunt:</strong> Got carts. Stocked shelves. Scanned groceries. Not much to say about this job.
             </li>
             <li class="work-item">
-                <strong>Student Researcher (AI):</strong> Under the guidance of Dr. Lahn, I am working on a project using LangChain, the Llama3 model from Ollama, and ChromaDB with Ollama embeddings. We are developing a pipeline to ingest PDF documents into a locally run Retrieval-Augmented Generation (RAG) system, allowing users to query for information specific to those documents.
+                <strong>Chophouse Manager:</strong> I attended Virginia Tech for one year, and while I was there, I worked in JP’s chophouse. I eventually became a student manager who helped schedule employees and manage our small shop. My coworkers were great here. The place shut down during COVID, and I didn’t return to VT afterward.
+            </li>
+            <li class="work-item">
+                <strong>Pizza Chef:</strong> My first job was at Brickhouse Pizza. I started off washing dishes and moved on to making pizzas by the time I left for college. Had fun here, worked with friends.
             </li>
         </ul>
 
