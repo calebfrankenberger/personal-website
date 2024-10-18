@@ -15,9 +15,9 @@ import ThemeIcon from './ThemeIcon.astro';
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-    const iconLinks = document.querySelectorAll('.icon__link img');
+    const iconLinks = document.querySelectorAll('.icon__link svg');
     iconLinks.forEach((icon) => {
-        const parent = icon.parentElement;
+        const parent = icon.closest('a');
         if (parent) {
             const color = getComputedStyle(parent).color;
             icon.setAttribute('fill', color);

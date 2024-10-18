@@ -1,6 +1,6 @@
 ---
 ---
-<button id="themeToggle" title="Theme Toggle">
+<button class="navbar__button" id="themeToggle" title="Theme Toggle">
     <svg width="30px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <!-- Sun Icon -->
         <g class="sun">
@@ -27,6 +27,13 @@
     #themeToggle {
         border: 0;
         background: none;
+        display: flex;
+        align-items: center;
+    }
+
+    #themeToggle svg {
+        display: block;
+        margin: auto;
     }
 
     #themeToggle:hover {
@@ -36,14 +43,14 @@
 
     .sun {
         display: none;
-        color: #1e1e2e; /* Sun icon color in light mode */
+        color: var(--text-light); /* Match the light mode text color */
     }
 
     .moon {
         display: none;
-        color: #f0ead6; /* Moon icon color in dark mode */
+        color: var(--text); /* Match the dark mode text color */
     }
- 
+
     :global(.light) .sun { 
         display: inline;
     }
@@ -59,67 +66,49 @@
     :global(.dark) .moon {
         display: inline;
     }
+ 
+    @media only screen and (max-width: 37.5rem) {
+    #themeToggle {
+      margin-left: 0; /* Remove left margin for small screens */
+    }
+  }
+
+}
+
+
 </style>
 
 <script>
-    // Function to get the current theme from localStorage or default to dark
     const getTheme = () => {
-        if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-            return localStorage.getItem('theme');
-        }
-        if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-            return 'light';
-        }
-        return 'dark';
+        return localStorage.getItem('theme') || 
+               (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
     };
 
-    // Function to update the icon visibility and color based on the theme
-    const updateIconVisibility = (theme) => {
-        const sunIcon = document.querySelector('.sun') as HTMLElement;
-        const moonIcon = document.querySelector('.moon') as HTMLElement;
-        const themeToggle = document.getElementById('themeToggle') as HTMLElement;
-        if (sunIcon && moonIcon && themeToggle) {
-            if (theme === 'light') {
-                sunIcon.style.display = 'inline';
-                moonIcon.style.display = 'none';
-                themeToggle.style.color = '#1e1e2e'; // Sun icon color in light mode
-            } else {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'inline';
-                themeToggle.style.color = '#fdebf3'; // Moon icon color in dark mode
-            }
-        }
+    const applyTheme = (theme) => {
+        document.documentElement.classList.toggle('light', theme === 'light');
+        document.documentElement.classList.toggle('dark', theme !== 'light');
     };
 
-    // Immediately apply the theme class to the document
-    const applyInitialTheme = () => {
+    const initTheme = () => {
         const theme = getTheme();
-        if (theme === 'light') {
-            document.documentElement.classList.add('light');
-            document.documentElement.classList.remove('dark');
-        } else {
-            document.documentElement.classList.add('dark');
-            document.documentElement.classList.remove('light');
-        }
-        updateIconVisibility(theme);
+        applyTheme(theme);
     };
 
-    applyInitialTheme();
+    initTheme(); // Apply the theme immediately when the script loads
 
     document.addEventListener('DOMContentLoaded', () => {
-        // Toggle theme and update localStorage on button click
         const handleToggleClick = () => {
             const isLightMode = document.documentElement.classList.toggle('light');
             document.documentElement.classList.toggle('dark', !isLightMode);
             const newTheme = isLightMode ? 'light' : 'dark';
             localStorage.setItem("theme", newTheme);
-            updateIconVisibility(newTheme);
         };
 
-        // Attach the click event listener to the theme toggle button
         const themeToggle = document.getElementById("themeToggle");
         if (themeToggle) {
             themeToggle.addEventListener("click", handleToggleClick);
         }
+
+        document.addEventListener('astro:page-load', initTheme);
     });
 </script>

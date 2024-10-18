@@ -2,15 +2,14 @@
 import Layout from '../layouts/Layout.astro';
 const pageTitle = "Caleb Frankenberger";
 const metaDescription = "Learn more about Caleb Frankenberger, his education, projects, hobbies, and interests.";
+
+import { Image } from "astro:assets";
+import img_portrait from "../assets/portrait.png";
 ---
 
 <!-- TODO -->
 
-<!-- Make responsive for super small screen (flip phone) -->
-<!-- Add descriptive aria label (alt text?) for all links -->
 <!-- Add descriptive alt texts for all images -->
-<!-- Convert all images to WEBP files -->
-<!-- Sort images in public into folders -->
 <!-- Write project post: Telescope -->
 <!-- Write project post: Automata -->
 <!-- Write project post: LFSR -->
@@ -20,7 +19,7 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
 
 <Layout pageTitle={pageTitle} metaDescription={metaDescription}>
     <div class="gif">
-        <img class="portrait" width="331" height="284" alt="Drawing of Caleb Frankenberger" src="/portrait.png"/>
+        <Image class="portrait" width="331" height="284" alt="Drawing of Caleb Frankenberger" src={img_portrait} />
     </div>
     <div class="content">
         <h1 class="center" id="about-me">About Me</h1>
@@ -29,8 +28,8 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
         
         <p>Hi! I’m Caleb, from Virginia, where I live with my fiancé Megan and our two cats, Leo and Fiona. I’m passionate about learning and exploring new things, particularly in the fields of science and technology.</p>
 
-        <p class="center"><a href="/posts/cat-pics"><button class="btn" aria-label="View Cat Pictures">Cat Pictures</button></a></p>
-        
+        <p class="center"><a href="/posts/cat-pics"><button class="btn" aria-label="View Cat Pictures of Leo and Fiona">Cat Pictures</button></a></p>
+ 
         <h2 id="education">Education</h2>
         <p>I'm currently studying at Radford University, pursuing a double major in Mathematics (with a Statistics concentration) and Physics (with the Experimental and Theoretical concentration). From a young age, I’ve always been fascinated by how things work. I believe that my choice of majors will help me better understand the world around me.</p>
         
@@ -61,9 +60,7 @@ const metaDescription = "Learn more about Caleb Frankenberger, his education, pr
         <h2 id="hobbies-and-interests">Hobbies and Interests</h2>
 
         <p>
-            <strong>Hiking & Outdoors:</strong> If you know me, you know I love hiking. Recently, I went on a backpacking trip to Grayson Highlands, VA (<a href="/posts/backpacking-trip" aria-label="See photos from the backpacking trip to Grayson Highlands, VA">See backpacking photos</a>). One of my favorite things to do is go camping with Megan. In 2021, I made a custom truck camping shell setup, and we went on a week-long adventure across West Virginia, Kentucky, Tennessee, and North Carolina before returning to Virginia (<a href="/posts/truck-camping" aria-label="See details about the truck camping adventure">Truck camping</a>). Another outdoor activity I enjoy is kayaking, which I usually do with my Dad and brothers (Jack and Sam).
-        </p>
-
+            <strong>Hiking & Outdoors:</strong> If you know me, you know I love hiking. Recently, I went on a backpacking trip to Grayson Highlands, VA (<a href="/posts/backpacking-trip" aria-label="See photos from the backpacking trip to Grayson Highlands, VA">See backpacking photos</a>). </p>
         <p>
             <strong>Woodworking:</strong> When I was 16, I wanted a new desk to put my computer setup on. With no money to buy one, and a lack of free options, I took a trip to Lowe’s to get their unneeded pallets. This began my woodworking journey, and in 2022 I finally bought the tools to do it properly (table saw, clamps, etc). I am never happy with the price and quality available with pre-built furniture, and I enjoy creating custom pieces like coffee tables, TV stands, etc. I also like making personalized gifts such as jewelry boxes, cutting boards, and chess boards for my friends and family (<a href="/posts/woodworking-projects" aria-label="Check out my woodworking projects">Check out my projects</a>).
         </p>

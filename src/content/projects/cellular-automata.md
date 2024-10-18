@@ -2,7 +2,7 @@
 title: 'Cellular Automata Simulator'
 description: 'Description'
 image:
-  url: '/automata-cover.png'
+  url: '/assets/projects/automata-cover.webp'
   alt: 'Screenshot of the simulator running'
 ---
 

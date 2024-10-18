@@ -2,7 +2,7 @@
 title: 'RAG AI Project'
 description: 'Retrieval-Augmented Generation AI Project'
 image:
-  url: '/rag-ai-cover.png'
+  url: '/assets/projects/placeholder.webp'
   alt: 'A picture of the web-interface for the proejct'
 ---
 

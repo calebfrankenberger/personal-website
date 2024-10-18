@@ -11,7 +11,7 @@ const { url, image, title, body } = Astro.props;
 <li class="card">
     <a class="card__link" href={url}>
         <div class="card__img-wrapper">
-            <img class="card__img" src={image} alt={title}>
+            <img class="card__img" src={image} alt={title} />
         </div>
         <h3 class="card__title">
             {title}
@@ -20,4 +20,4 @@ const { url, image, title, body } = Astro.props;
             {body}
         </p>
     </a>
-</li
+</li>

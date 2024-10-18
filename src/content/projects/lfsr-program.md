@@ -2,7 +2,7 @@
 title: 'LFSR Image Encryption Program'
 description: 'Description'
 image:
-  url: '/lfsr-cover.png'
+  url: '/assets/projects/lfsr-cover.webp'
   alt: 'Screenshot of before and after image encryption'
 ---
 
