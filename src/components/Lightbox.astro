@@ -1,0 +1,51 @@
+---
+
+---
+
+<div
+  id="lightboxOverlay"
+  class="lightbox-overlay"
+  onclick="closeLightbox()" 
+>
+  <img id="lightboxImg" alt="Enlarged Image" />
+</div>
+
+<script is:inline>
+  window.openLightbox = (event) => {
+    const overlay = document.getElementById('lightboxOverlay');
+    const overlayImg = document.getElementById('lightboxImg');
+    if (!overlay || !overlayImg) return;
+
+    overlayImg.src = event.target.src;
+    overlay.classList.add('active');
+  };
+
+  window.closeLightbox = () => {
+    const overlay = document.getElementById('lightboxOverlay');
+    if (overlay) overlay.classList.remove('active');
+  };
+</script>
+
+<style>
+  .lightbox-overlay {
+    display: none !important; 
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    cursor: zoom-out;
+    }
+    .lightbox-overlay.active {
+    display: flex !important; 
+    }
+
+  .lightbox-overlay img {
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 8px;
+    cursor: default; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  }
+</style>

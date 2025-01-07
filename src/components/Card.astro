@@ -1,23 +1,36 @@
 ---
-interface Props {
-    url: string;
-    image: string;
-    title: string;
-    body: string;
+import {clsx} from "clsx";
+interface Props extends HTMLAttributes<'div'> {
+  darkMode?: boolean;
+  variant?: 'glass' | 'lightGlass' | 'quartz';
+  shadow?: boolean;
+  borderless?: boolean;
 }
+import "../styles/components.scss";
+import {type HTMLAttributes} from "astro/types";
 
-const { url, image, title, body } = Astro.props;
+const {
+  darkMode = false,
+  variant = 'quartz',
+  shadow = true,
+  borderless = false,
+  ...props
+} = Astro.props;
 ---
-<li class="card">
-    <a class="card__link" href={url}>
-        <div class="card__img-wrapper">
-            <img class="card__img" src={image} alt={title} />
-        </div>
-        <h3 class="card__title">
-            {title}
-        </h3>
-        <p class="card__txt">
-            {body}
-        </p>
-    </a>
-</li>
+
+<div
+    class={
+        clsx(
+            props.class,
+            'card',
+            darkMode && 'dark-mode',
+            variant==='glass' && 'glass',
+            variant==='lightGlass' && 'light-glass',
+            shadow || 'no-shadow',
+            borderless && 'borderless'
+        )
+    }
+    {...props}
+>
+  <slot />
+</div>

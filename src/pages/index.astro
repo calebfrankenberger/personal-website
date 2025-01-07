@@ -1,138 +1,147 @@
 ---
-import Layout from '../layouts/Layout.astro';
-const pageTitle = "Caleb Frankenberger";
-const metaDescription = "Learn more about Caleb Frankenberger, his education, projects, hobbies, and interests.";
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import {getCollection} from 'astro:content';
+import {SiGithub, SiGmail, SiLinkedin} from 'solid-icons/si';
+import {SITE_TITLE, SITE_DESCRIPTION, GLOBAL_STYLE, BIO, AVATAR_SRC} from '../consts';
+import Card from '@/components/Card.astro';
+import PostCard from "../components/PostCard.astro";
 
-import { Image } from "astro:assets";
-import img_portrait from "../assets/portrait.png";
+const posts = (await getCollection('blog'))
+    .filter(post => post.data.pinned)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
 ---
 
-<!-- TODO -->
+<!doctype html>
+<html lang="en">
+<head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION}/>
+</head>
+<body>
+<Header/>
+<main>
+    <Card variant={GLOBAL_STYLE} id="avatar-bio">
+        <img src={AVATAR_SRC} alt="avatar"/>
+        <section id="bio">
+            <h2 class="emphasize">
+                {SITE_TITLE}
+            </h2>
+            <p>
+                {BIO}
+            </p>
+            <div>
+                <p>
+                    <strong>
+                        Links:
+                    </strong>
+                </p>
+                <div id="contact">
+                    <a class="icon-link" href="https://github.com/calebfrankenberger" target="_blank" aria-label="GitHub">
+                        <SiGithub size={32} />
+                    </a>
+                    <a class="icon-link" href="https://linkedin.com/in/calebfrankenberger" target="_blank" aria-label="GitHub">
+                        <SiLinkedin size={32} />
+                    </a>
+                    <a class="icon-link" href="#" target="_blank" aria-label="GitHub">
+                        <SiGmail size={32} />
+                    </a>
+                </div>
+            </div>
+        </section>
+    </Card>
 
-<!-- Add descriptive alt texts for all images -->
-<!-- Write project post: Telescope -->
-<!-- Write project post: Automata -->
-<!-- Write project post: LFSR -->
-<!-- Write project post: RAG AI -->
-<!-- Write post: Backpacking -->
+    <Card variant={GLOBAL_STYLE}>
+        <h3>
+            Pinned Posts
+        </h3>
+    </Card>
+    <section id="pinned-container">
+        {
+            posts.map((post) => (
+                    <PostCard {...post.data} slug={post.slug}/>
+            ))
+        }
+    </section>
 
+</main>
+<Footer/>
+</body>
+</html>
 
-<Layout pageTitle={pageTitle} metaDescription={metaDescription}>
-    <div class="gif">
-        <Image class="portrait" width="331" height="284" alt="Drawing of Caleb Frankenberger" src={img_portrait} />
-    </div>
-    <div class="content">
-        <h1 class="center" id="about-me">About Me</h1>
-        
-        <h2 id="introduction">Introduction</h2>
-        
-        <p>Hi! I’m Caleb, from Virginia, where I live with my fiancé Megan and our two cats, Leo and Fiona. I'm currently studying at Radford University, majoring in Mathematics with a Statistics concentration.</p>
-        
-        <p class="center"><a href="/posts/cat-pics"><button class="btn" aria-label="View Cat Pictures of Leo and Fiona">Cat Pictures</button></a></p>
+<style>
+    main {
+        max-width: 70rem;
+        width: 100%;
+        margin: 3rem auto;
+        padding: 0 1rem;
+    }
 
+    main > * {
+        margin-bottom: 2rem;
+    }
 
-        <h2 id="projects">Projects</h2>
+    main > *:last-child {
+        margin-bottom: 0;
+    }
 
-        <p>I'm proud of several projects, including:</p>
-        
-        <p>
-            <strong>Retrieval-Augmented Generation AI Project:</strong> Developed a web interface using Flask for uploading and querying PDF documents, integrated a language model, and optimized retrieval accuracy through backend customization.
-            <a class="see_more" href="/projects/ai-project" aria-label="See more about the Retrieval-Augmented Generation AI Project">See more...</a>
-        </p>
+    #avatar-bio {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+    }
 
-        <p>
-            <strong>Newtonian Telescope Construction:</strong> I 3D printed all the parts, purchased hardware and mirrors, then assembled and calibrated the telescope myself. 
-            <a class="see_more" href="/projects/telescope" aria-label="See more about the Newtonian Telescope Construction project">See more...</a>
-        </p>
+    #avatar-bio > img {
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
+    }
 
-        <p>
-            <strong>Cellular Automata Simulator:</strong> This project uses a simple mathematical formula to simulate colonies of living organisms. 
-            <a class="see_more" href="/projects/cellular-automata" aria-label="See more about the Cellular Automata Simulator project">See more...</a>
-        </p>
+    #bio {
+        max-width: 20rem;
+    }
 
-        <p>
-            <strong>Linear Feedback Shift Register Program:</strong> This program generates random numbers to encrypt and decrypt images. 
-            <a class="see_more" href="/projects/lfsr-program" aria-label="See more about the Linear Feedback Shift Register Program project">See more...</a>
-        </p>
+    @media (max-width: 700px) {
+        #avatar-bio {
+            flex-direction: column;
+        }
 
-        <h2 id="hobbies-and-interests">Hobbies and Interests</h2>
+        #bio {
+            max-width: 100%;
+        }
+    }
 
-        <p>
-            <strong>Hiking & Outdoors:</strong> If you know me, you know I love hiking. Recently, I went on a backpacking trip to Grayson Highlands, VA (<a href="/posts/backpacking-trip" aria-label="See photos from the backpacking trip to Grayson Highlands, VA">See backpacking photos</a>). </p>
-        <p>
-            <strong>Woodworking:</strong> When I was 16, I wanted a new desk to put my computer setup on. With no money to buy one, and a lack of free options, I took a trip to Lowe’s to get their unneeded pallets. This began my woodworking journey, and in 2022 I finally bought the tools to do it properly (table saw, clamps, etc). I am never happy with the price and quality available with pre-built furniture, and I enjoy creating custom pieces like coffee tables, TV stands, etc. I also like making personalized gifts such as jewelry boxes, cutting boards, and chess boards for my friends and family (<a href="/posts/woodworking-projects" aria-label="Check out my woodworking projects">Check out my projects</a>).
-        </p>
+    #bio > p {
+        line-height: 1.5;
+        letter-spacing: .02rem;
+    }
 
-        <p>
-            <strong>Music:</strong> I love listening to music. I listen to almost every genre. Some of my favorite artists include:
-            <ul>
-                <li>Still Woozy</li>
-                <li>Caamp</li>
-                <li>Tyler the Creator</li>
-                <li>Glass Animals</li>
-                <li>Greta van Fleet</li>
-                <li>Watchhouse</li>
-                <li>Sturgill Simpson</li>
-                <li>John Mayer</li>
-                <li>Tyler Childers</li>
-            </ul>
-            In terms of playing music, I know how to play the French Horn and Trumpet. If I ever have enough free time, I would love to learn piano and guitar.
-        </p>
+    #bio > * {
+        margin-bottom: 0.75rem;
+    }
 
-        <p>
-            <strong>Car work:</strong> When things break, I like to try to fix them myself to save money. I have learned a lot about working on cars from the many I have owned over the years.
-        </p>
+    #bio > *:last-child {
+        margin-bottom: 0;
+    }
 
-        <p>
-            <strong>Misc:</strong> I also enjoy playing video games such as Minecraft and Valorant. 3D printing is another hobby of mine; the idea of being able to print any shape out of a spool of plastic is very cool to me.
-        </p>
-     
-        <h2 id="technical-skills">Technical Skills</h2>
-        <h3>Programming and Development</h3>
-        <ul>
-            <li>Languages: Proficient in Java, R, SAS; experienced with HTML, CSS, and basic JavaScript; familiar with Python.</li>
-            <li>Tools and Environments: Prefer IntelliJ for Java development, RStudio for R programming, and VSCode for web development; familiar with version control using Git/GitHub.</li>
-            <li>Systems: Experienced in working with Linux, Windows, and macOS.</li>
-          </ul>
+    #contact {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-top: .25rem
+    }
 
-        <h3>Hardware and Technical Skills</h3>
-        <ul>
-            <li>Soldering and Electrical Work: Experience in soldering and wiring electrical circuits and repairing old devices.</li>
-            <li>Tool Usage: Proficient in using all types of saws and most power tools, gained through various DIY and woodworking projects.</li>
-        </ul>
+    .icon-link {
+        height: 2rem;
+        width: 2rem;
+    }
 
-        <h3>Data Analysis and Statistical Techniques</h3>
-        <ul>
-            <li>Current Learning: Actively learning R programming, regression analysis, and other statistical techniques to enhance data analysis capabilities.</li>
-        </ul>
-        
-        <h2 id="work-experience">Work Experience</h2>
-        
-        <p>I have had many jobs over the years, and I believe they have all given me lots of good perspectives and experiences. If you want my official resume, you can find it here. Below are my lasting impressions these jobs left on me:</p>
-
-        <ul>
-            <li class="work-item">
-                <strong>Tutor at Radford University:</strong> About to start this!
-              </li>
-            <li class="work-item">
-                <strong>Summer Student Researcher:</strong> I got to code cool AI stuff under the guidance of Dr. Lahn. I learned a lot about python, retrieval-augmented systems, and how to tweak the inner workings of AI.
-            </li>
-            <li class="work-item">
-                <strong>IT Technician:</strong> It was fun while it lasted..
-            </li>
-            <li class="work-item">
-                <strong>Radford Army Ammunition Plant Security Guard:</strong> Don’t get me started.
-            </li>
-            <li class="work-item">
-                <strong>Target Grunt:</strong> Got carts. Stocked shelves. Scanned groceries. Not much to say about this job.
-            </li>
-            <li class="work-item">
-                <strong>Chophouse Manager:</strong> I attended Virginia Tech for one year, and while I was there, I worked in JP’s chophouse. I eventually became a student manager who helped schedule employees and manage our small shop. My coworkers were great here. The place shut down during COVID, and I didn’t return to VT afterward.
-            </li>
-            <li class="work-item">
-                <strong>Pizza Chef:</strong> My first job was at Brickhouse Pizza. I started off washing dishes and moved on to making pizzas by the time I left for college. Had fun here, worked with friends.
-            </li>
-        </ul>
-
-    </div>
-</Layout>
+    #pinned-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+        margin-top: -1.5rem;
+    }
+</style>
